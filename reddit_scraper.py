@@ -1,13 +1,26 @@
-# pip install praw
+import pandas as pd
+import json
+import requests
 
-import praw
 
-reddit = praw.Reddit(
-    client_id="RFV4JD4o7WaMmg",
-    client_secret="ONq60_EDhK-FFUY80taWKxnzdBNcZQ",
-    password="5Yfu>g86VVMK]ma?mb&X",
-    user_agent="wsb_bot",
-    username="unisg_wsb_bot",
-)
+def get_posts(data_type, **kwargs):
+    """
+    https://www.jcchouinard.com/how-to-use-reddit-api-with-python/
+    :param data_type: str, either: 'comment' or 'submission
+    :param kwargs: other arguments that are interpreted as payload
+    :return:
+    """
+    base_url = f"https://api.pushshift.io/reddit/search/{data_type}/"
+    payload = kwargs
+    request = requests.get(base_url, params=payload)
 
-print(reddit.user.me())
+    return request.json()
+
+
+def main():
+    
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    main()
