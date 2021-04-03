@@ -4,11 +4,11 @@ import pandas as pd
 from yfinance import Ticker
 
 
-tickerStrings = ['AMC', 'GME', 'BB']
+tickerStrings = ['AMC', 'GME', 'BB','KOSS','EXPR','ZOM','NOK']
 df_list = list()
 for ticker in tickerStrings:
     data = yf.download(ticker, group_by="Ticker", period='max')
-    data['Stock'] = ticker  # add this column becasue the dataframe doesn't contain a column with the ticker
+    data['Stock'] = ticker
     df_list.append(data)
 
 # combine all dataframes into a single dataframe
