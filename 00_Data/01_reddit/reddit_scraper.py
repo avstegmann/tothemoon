@@ -1,8 +1,6 @@
 import datetime as dt
 import pandas as pd
-import json
 import requests
-from pandas import DataFrame
 
 
 def get_posts(data_type, after=None, before=None, **kwargs):
