@@ -4,7 +4,7 @@ import requests
 import sys
 
 
-def get_posts(data_type, after=None, before=None, **kwargs):
+def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
     """
     https://www.jcchouinard.com/how-to-use-reddit-api-with-python/
     :param data_type: str, either: 'comment' or 'submission
@@ -27,7 +27,7 @@ def get_posts(data_type, after=None, before=None, **kwargs):
         data = request.json()
         df = pd.DataFrame.from_dict(data['data'])
         mes = df.__len__()
-        print(kwargs['selftext'] + ' | ' + str(mes))
+        print(mes)
         while date > after:
             payload = kwargs
             request = requests.get(base_url, params=payload)
@@ -37,13 +37,12 @@ def get_posts(data_type, after=None, before=None, **kwargs):
             kwargs['before'] = df.iloc[-1].created_utc
             date = kwargs['before']
             mes += (df.__len__() - mes)
-            # https://stackoverflow.com/questions/5290994/remove-and-replace-printed-items
-            sys.stdout.write('\033[2K\033[1G')
-            print(kwargs['selftext'] + ' | ' + str(mes))
+            print(mes)
         df = df.replace("\n", " ", regex=True)
         # https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime
         df.created_utc = pd.to_datetime(df.created_utc, unit='s')
         df['date'] = pd.to_datetime(df.created_utc, unit='s').dt.date
+        df['ticker'] = ticker
         return df
 
 
@@ -56,6 +55,7 @@ def main():
                    selftext='BB|Blackberry',
                    after=after,
                    before=before,
+                   ticker='BB',
                    size=1000)
     df.to_csv('AMC.csv', sep='|', index=False, encoding='utf-8')
 
