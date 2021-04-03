@@ -1,48 +1,15 @@
-from yahoo_finance import Ticker
-from pprint import pprint
-
-import yahoofinance as yf
-import pandas as pd
-
-
 
 import yfinance as yf
+import pandas as pd
+from yfinance import Ticker
 
 # get stock info
 
-AMC_Entertainment_Holdings = Ticker('AMC')
-Gamestop = Ticker('GME')
-BlackBerry_Limited = Ticker('BB')
-Koss_Corporation = Ticker('KOSS')
-Express = Ticker('EXPR')
-Zomedica_Corp = Ticker('ZOM')
-Nokia_Corporation = Ticker('NOK')
-Naked_Brand_Group_Limited = Ticker('NAKD')
-Palantir_Technologies = Ticker('PLTR')
-Jaguar_Health = Ticker('JAGX')
-Sundial_Growers = Ticker('SNDL')
-Bed_Bath_and_Beyond_Inc = Ticker('BBBY')
-Taiwan_Semiconductor_Manufacturing_Company_Limited = Ticker('TSM')
-Churchill_Capital_Corp_IV = Ticker('CCIV')
-Tesla = Ticker('TSLA')
-Forward_Industries = Ticker('FORD')
-Academy_Sports_and_Outdoors = Ticker('ASO')
-MicroVision = Ticker('MVIS')
-Advanced_Micro_Devices = Ticker('AMD')
-General_Motors_Company = Ticker('GM')
-Encore_Wire_Corporation = Ticker('WIRE')
-Macys = Ticker('M')
-Curaleaf_Holdings = Ticker('CURLF')
-Netflix = Ticker('NFLX')
-The9_Limited = Ticker('NCTY')
-Tian_Ruixiang_Holdings_Ltd = Ticker('TIRX')
-Castor_Maritime_Inc = Ticker('CTRM')
-RLX_Technology_Inc = Ticker('RLX')
-EZGO_Technologies_Ltd = Ticker('EZGO')
-Sorrento_Therapeutics = Ticker('SRNE')
-CEL_SCI_Corporation = Ticker('CVM')
-Ligand_Pharmaceuticals_Incorporated = Ticker('LGND')
-National_Beverage_Corp = Ticker('FIZZ')
+AMC_Entertainment_Holdings = yf.Ticker('AMC')
+Gamestop = yf.Ticker('GME')
+BlackBerry_Limited = yf.Ticker('BB')
+Koss_Corporation = yf.Ticker('KOSS')
+Express = yf.Ticker('EXPR')
 
 
 hist_AMC_Entertainment_Holdings = AMC_Entertainment_Holdings.history(period="max")
@@ -50,3 +17,17 @@ hist_AMC_Entertainment_Holdings = AMC_Entertainment_Holdings.history(period="max
 
 print(hist_AMC_Entertainment_Holdings)
 
+print('test_für_geileren Code')
+
+tickerStrings = ['AAPL', 'MSFT']
+df_list = list()
+for ticker in tickerStrings:
+    data = yf.download(ticker, group_by="Ticker", period='2d')
+    data['ticker'] = ticker  # add this column becasue the dataframe doesn't contain a column with the ticker
+    df_list.append(data)
+
+# combine all dataframes into a single dataframe
+df = pd.concat(df_list)
+
+# save to csv
+df.to_csv('ticker.csv')
