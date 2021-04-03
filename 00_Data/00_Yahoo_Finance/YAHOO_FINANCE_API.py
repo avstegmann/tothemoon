@@ -1,35 +1,52 @@
-from yahoo_finance import Share
+from yahoo_finance import Ticker
+from pprint import pprint
 
-AMC_Entertainment_Holdings = Share('AMC')
-Gamestop = Share('GME')
-BlackBerry_Limited = Share('BB')
-Koss_Corporation = Share('KOSS')
-Express = Share('EXPR')
-Zomedica_Corp = Share('ZOM')
-Nokia_Corporation = Share('NOK')
-Naked_Brand_Group_Limited = Share('NAKD')
-Palantir_Technologies = Share('PLTR')
-Jaguar_Health = Share('JAGX')
-Sundial_Growers = Share('SNDL')
-Bed_Bath_and_Beyond_Inc = Share('BBBY')
-Taiwan_Semiconductor_Manufacturing_Company_Limited = Share('TSM')
-Churchill_Capital_Corp_IV = Share('CCIV')
-Tesla = Share('YHOO')
-Forward Industries = Share('YHOO')
-Academy Sports and Outdoors = Share('YHOO')
-MicroVision = Share('YHOO')
-Advanced Micro Devices = Share('YHOO')
-General Motors Company = Share('YHOO')
-Encore Wire Corporation = Share('YHOO')
-Macy's = Share('YHOO')
-Curaleaf Holdings = Share('YHOO')
-Netflix = Share('YHOO')
-The9 Limited = Share('YHOO')
-Tian Ruixiang Holdings Ltd = Share('YHOO')
-Castor Maritime Inc. = Share('YHOO')
-RLX Technology Inc. = Share('YHOO')
-EZGO Technologies Ltd. = Share('YHOO')
-Sorrento Therapeutics = Share('YHOO')
-CEL-SCI Corporation = Share('YHOO')
-Ligand Pharmaceuticals Incorporated = Share('YHOO')
-National Beverage Corp. = Share('YHOO')
+import yahoofinance as yf
+import pandas as pd
+
+
+
+import yfinance as yf
+
+# get stock info
+
+AMC_Entertainment_Holdings = Ticker('AMC')
+Gamestop = Ticker('GME')
+BlackBerry_Limited = Ticker('BB')
+Koss_Corporation = Ticker('KOSS')
+Express = Ticker('EXPR')
+Zomedica_Corp = Ticker('ZOM')
+Nokia_Corporation = Ticker('NOK')
+Naked_Brand_Group_Limited = Ticker('NAKD')
+Palantir_Technologies = Ticker('PLTR')
+Jaguar_Health = Ticker('JAGX')
+Sundial_Growers = Ticker('SNDL')
+Bed_Bath_and_Beyond_Inc = Ticker('BBBY')
+Taiwan_Semiconductor_Manufacturing_Company_Limited = Ticker('TSM')
+Churchill_Capital_Corp_IV = Ticker('CCIV')
+Tesla = Ticker('TSLA')
+Forward_Industries = Ticker('FORD')
+Academy_Sports_and_Outdoors = Ticker('ASO')
+MicroVision = Ticker('MVIS')
+Advanced_Micro_Devices = Ticker('AMD')
+General_Motors_Company = Ticker('GM')
+Encore_Wire_Corporation = Ticker('WIRE')
+Macys = Ticker('M')
+Curaleaf_Holdings = Ticker('CURLF')
+Netflix = Ticker('NFLX')
+The9_Limited = Ticker('NCTY')
+Tian_Ruixiang_Holdings_Ltd = Ticker('TIRX')
+Castor_Maritime_Inc = Ticker('CTRM')
+RLX_Technology_Inc = Ticker('RLX')
+EZGO_Technologies_Ltd = Ticker('EZGO')
+Sorrento_Therapeutics = Ticker('SRNE')
+CEL_SCI_Corporation = Ticker('CVM')
+Ligand_Pharmaceuticals_Incorporated = Ticker('LGND')
+National_Beverage_Corp = Ticker('FIZZ')
+
+
+hist_AMC_Entertainment_Holdings = AMC_Entertainment_Holdings.history(period="max")
+
+
+print(hist_AMC_Entertainment_Holdings)
+
