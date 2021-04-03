@@ -1,14 +1,12 @@
 from yahoo_finance import Share
 
-yahoo = Share('YHOO')
-
 AMC_Entertainment_Holdings = Share('AMC')
-Gamestop = Share('YHOO')
-BlackBerry Limited = Share('YHOO')
-Koss Corporation = Share('YHOO')
-Express = Share('YHOO')
-Zomedica Corp. = Share('YHOO')
-Nokia Corporation = Share('YHOO')
+Gamestop = Share('GME')
+BlackBerry_Limited = Share('BB')
+Koss_Corporation = Share('KOSS')
+Express = Share('EXPR')
+Zomedica_Corp = Share('ZOM')
+Nokia_Corporation = Share('NOK')
 Naked Brand Group Limited = Share('YHOO')
 Palantir Technologies = Share('YHOO')
 Jaguar Health = Share('YHOO')
