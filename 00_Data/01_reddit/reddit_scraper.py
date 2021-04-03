@@ -27,27 +27,32 @@ def get_posts(data_type, after=None, before=None, **kwargs):
         df = pd.DataFrame.from_dict(data['data'])
         mes = df.__len__()
         print(mes)
-        if mes == 1000:
-            while date > after:
-                payload = kwargs
-                request = requests.get(base_url, params=payload)
-                data = request.json()
-                dump = pd.DataFrame.from_dict(data['data'])
-                df = df.append(dump, ignore_index=True)
-                kwargs['before'] = df.iloc[-1].created_utc
-                date = kwargs['before']
-                mes += 1000
-                print(mes)
+        while date > after:
+            payload = kwargs
+            request = requests.get(base_url, params=payload)
+            data = request.json()
+            dump = pd.DataFrame.from_dict(data['data'])
+            df = df.append(dump, ignore_index=True)
+            kwargs['before'] = df.iloc[-1].created_utc
+            date = kwargs['before']
+            mes += (df.__len__() - mes)
+            print(kwargs['selftext'] + ' | ' + str(mes) + ' | ' + date.dt.date)
         df = df.replace("\n", " ", regex=True)
         df.created_utc = pd.to_datetime(df.created_utc, unit='s')
+        df['date'] = pd.to_datetime(df.created_utc, unit='s').dt.date
         return df
 
 
 def main():
-    after = int(dt.datetime(2020, 6, 1).timestamp())
-    before = int(dt.datetime(2020, 9, 1).timestamp())
+    after = int(dt.datetime(2019, 6, 30).timestamp())
+    before = int(dt.datetime(2021, 4, 1).timestamp())
     df = get_posts('submission',
-                   subreddit='wallstreetbets', is_self=True, selftext='GME', after=after, before=before, size=1000)
+                   subreddit='wallstreetbets',
+                   is_self=True,
+                   selftext='GME|Gamestop',
+                   after=after,
+                   before=before,
+                   size=1000)
     df.to_csv('GME2.csv', sep='|', index=False, encoding='utf-8')
 
 
