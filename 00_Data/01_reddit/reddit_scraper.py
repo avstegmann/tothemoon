@@ -27,11 +27,16 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
         payload = kwargs
         request = requests.get(base_url, params=payload)
         data = request.json()
-        df = pd.DataFrame.from_dict(data['data'])
+        df = pd.DataFrame(columns=kwargs['fields'])
+        df = df.append(pd.DataFrame.from_dict(data['data']))
         kwargs['before'] = df.iloc[-1].created_utc
         date = kwargs['before']
         mes = df.__len__()
         print(mes)
+        df = df.replace("\n", " ", regex=True)
+        df.created_utc = pd.to_datetime(df.created_utc, unit='s')
+        df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
+        df = pd.DataFrame(columns=kwargs['fields'])
         while date > after:
             payload = kwargs
             request = requests.get(base_url, params=payload)
@@ -47,9 +52,8 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
                     df = df.replace("\n", " ", regex=True)
                     # https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime
                     df.created_utc = pd.to_datetime(df.created_utc, unit='s')
-                    df['date'] = pd.to_datetime(df.created_utc, unit='s').dt.date
-                    df.to_csv('bucket.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
-                    df = pd.DataFrame(columns=['created_utc', 'full_link', 'selftext'])
+                    df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
+                    df = pd.DataFrame(columns=kwargs['fields'])
                     mes = 100
                 if (mes % 100) > 0:
                     break
@@ -57,10 +61,9 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
                 print('Error')
                 pass
     df = df.replace("\n", " ", regex=True)
-    # https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime
     df.created_utc = pd.to_datetime(df.created_utc, unit='s')
     df['date'] = pd.to_datetime(df.created_utc, unit='s').dt.date
-    df.to_csv('bucket.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
+    df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
     # if ticker is not None:
     #    df['ticker'] = ticker
     print('Total posts: ' + str(len(df)))
@@ -68,8 +71,8 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
 
 
 def main():
-    after = int(dt.datetime(2019, 6, 30).timestamp())
-    before = int(dt.datetime(2019, 8, 8).timestamp())
+    after = int(dt.datetime(2019, 6, 30, 23, 59, 59).timestamp())
+    before = int(dt.datetime(2020, 5, 24, 2, 46, 46).timestamp())
     # df =
     get_posts('submission',
               subreddit='wallstreetbets',
@@ -78,9 +81,31 @@ def main():
               after=after,
               before=before,
               # ticker='RLX',
-              fields=['created_utc', 'full_link', 'selftext'],
+              fields=['created_utc',
+                      'author',
+                      'author_fullname',
+                      'author_flair_text',
+                      'link_flair_text',
+                      'url',
+                      'title',
+                      'selftext',
+                      'num_comments',
+                      'num_crossposts',
+                      'score',
+                      'upvote_ratio',
+                      'id',
+                      'is_crosspostable',
+                      'is_meta',
+                      'is_self',
+                      'is_video',
+                      'no_follow',
+                      'allow_live_comments',
+                      'all_awardings',
+                      'total_awards_received',
+                      'awarders',
+                      'gildings'],
               size=100)
-    #df.to_csv('all_posts_21.csv', sep='|', index=False, encoding='utf-8')
+    # df.to_csv('all_posts_21.csv', sep='|', index=False, encoding='utf-8')
 
 
 # Press the green button in the gutter to run the script.
