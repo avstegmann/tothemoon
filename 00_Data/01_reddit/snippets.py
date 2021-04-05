@@ -33,5 +33,3 @@ out = df[['created_utc',
           'total_awards_received',
           'awarders',
           'gildings']]
-
-

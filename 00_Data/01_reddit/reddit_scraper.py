@@ -35,7 +35,7 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
         print(mes)
         df = df.replace("\n", " ", regex=True)
         df.created_utc = pd.to_datetime(df.created_utc, unit='s')
-        df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
+        df.to_csv('full.csv', sep='|', index=False, encoding='utf-8')  # , mode='a', header=False)
         df = pd.DataFrame(columns=kwargs['fields'])
         while date > after:
             payload = kwargs
@@ -71,8 +71,8 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
 
 
 def main():
-    after = int(dt.datetime(2019, 6, 30, 23, 59, 59).timestamp())
-    before = int(dt.datetime(2020, 5, 24, 2, 46, 46).timestamp())
+    after = int(dt.datetime(2021, 3, 17, 17, 19, 4).timestamp())
+    before = int(dt.datetime(2021, 3, 27, 19, 18, 11).timestamp())
     # df =
     get_posts('submission',
               subreddit='wallstreetbets',
