@@ -1,9 +1,10 @@
-# Dieser Code sucht nach den Stichworten in Search Terms
+# Dieser Code sucht nach den Stichworten in Search Terms - Datenmenge wird vielleicht zu gross
+
 
 import twint
 import os
 
-search_terms = ['AMC', 'BB','KOSS','EXPR','ZOM','NOK','NAKD','PLTR','JAGX','SNDL','BBBY','TSM','CCIV','TSLA','FORD','ASO','MVIS','AMD','GM','WIRE','M','CURLF','NFLX','NCTY','TIRX','CTRM','RLX','EZGO','SRNE','CVM','LGND','FIZZ']
+search_terms = ['AMC','GME','BB','KOSS','EXPR','ZOM','NOK','NAKD','PLTR','JAGX','SNDL','BBBY','TSM','CCIV','TSLA','FORD','ASO','MVIS','AMD','GM','WIRE','M','CURLF','NFLX','NCTY','TIRX','CTRM','RLX','EZGO','SRNE','CVM','LGND','FIZZ']
 
 def jobone():
     for i in range(len(search_terms)):
