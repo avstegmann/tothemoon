@@ -33,3 +33,12 @@ out = df[['created_utc',
           'total_awards_received',
           'awarders',
           'gildings']]
+
+import ast
+from collections import Counter
+
+tickers = df.ticker_mentions.to_list()
+ticker_list = []
+for ticker in tickers:
+    ticker_list.append(ast.literal_eval(ticker))
+all_tickers = [ticker for sublist in ticker_list for ticker in sublist]
