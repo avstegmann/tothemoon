@@ -15,14 +15,14 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
     """
     print(ticker)
     base_url = f"https://api.pushshift.io/reddit/search/{data_type}/"
-    if after is None and before is None:
+    if after is None:# and before is None:
         print(kwargs)
         payload = kwargs
         request = requests.get(base_url, params=payload)
         data = request.json()
         df = pd.DataFrame.from_dict(data['data'])
     else:
-        kwargs['before'] = before
+        #kwargs['before'] = before
         print(kwargs)
         payload = kwargs
         request = requests.get(base_url, params=payload)
@@ -34,8 +34,7 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
         mes = df.__len__()
         print(mes)
         df = df.replace("\n", " ", regex=True)
-        df.created_utc = pd.to_datetime(df.created_utc, unit='s')
-        df.to_csv('full.csv', sep='|', index=False, encoding='utf-8')  # , mode='a', header=False)
+        df.to_csv('full.csv', sep='|', index=False, encoding='utf-8')
         df = pd.DataFrame(columns=kwargs['fields'])
         while date > after:
             payload = kwargs
@@ -50,8 +49,6 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
                 print('Status: ' + str(mes))
                 if (mes % 5000) == 0:
                     df = df.replace("\n", " ", regex=True)
-                    # https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime
-                    df.created_utc = pd.to_datetime(df.created_utc, unit='s')
                     df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
                     df = pd.DataFrame(columns=kwargs['fields'])
                     mes = 100
@@ -61,20 +58,23 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
                 print('Error')
                 pass
     df = df.replace("\n", " ", regex=True)
+    df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
+    df = pd.read_csv('full.csv', sep='|', lineterminator='\n')
+    # https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime
     df.created_utc = pd.to_datetime(df.created_utc, unit='s')
     df['date'] = pd.to_datetime(df.created_utc, unit='s').dt.date
-    df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
+    df.to_csv('full.csv', mode='w', sep='|', index=False, encoding='utf-8')
     print('Done')
 
 
 def main():
     after = int(dt.datetime(2021, 3, 31).timestamp())
-    before = int(dt.datetime(2021, 4, 11).timestamp())
+    #before = int(dt.datetime(2021, 4, 10, 19, 26, 00).timestamp())
     get_posts('submission',
               subreddit='wallstreetbets',
               is_self=True,
               after=after,
-              before=before,
+              #before=before,
               fields=['created_utc',
                       'author',
                       'author_fullname',
