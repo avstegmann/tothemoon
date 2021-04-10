@@ -1,3 +1,4 @@
+from collections import Counter
 import pandas as pd
 import os
 
@@ -42,3 +43,5 @@ ticker_list = []
 for ticker in tickers:
     ticker_list.append(ast.literal_eval(ticker))
 all_tickers = [ticker for sublist in ticker_list for ticker in sublist]
+
+cnt = Counter(all_tickers)

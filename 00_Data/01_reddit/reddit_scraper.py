@@ -64,23 +64,17 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
     df.created_utc = pd.to_datetime(df.created_utc, unit='s')
     df['date'] = pd.to_datetime(df.created_utc, unit='s').dt.date
     df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
-    # if ticker is not None:
-    #    df['ticker'] = ticker
-    print('Total posts: ' + str(len(df)))
-    # return df
+    print('Done')
 
 
 def main():
-    after = int(dt.datetime(2021, 3, 17, 17, 19, 4).timestamp())
-    before = int(dt.datetime(2021, 3, 27, 19, 18, 11).timestamp())
-    # df =
+    after = int(dt.datetime(2021, 3, 31).timestamp())
+    before = int(dt.datetime(2021, 4, 11).timestamp())
     get_posts('submission',
               subreddit='wallstreetbets',
               is_self=True,
-              # selftext='RLX',  # For company names longer than 1 word use " "
               after=after,
               before=before,
-              # ticker='RLX',
               fields=['created_utc',
                       'author',
                       'author_fullname',
