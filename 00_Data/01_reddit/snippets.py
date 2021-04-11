@@ -51,7 +51,7 @@ all_tickers.sort()
 with tqdm.tqdm(total=len(all_tickers)) as pbar:
     for ticker in all_tickers:
         mask = df.ticker_list.str.contains(rf'\b{ticker}\b', regex=True)
-        container = df2.append(df.loc[mask, ['created_utc', 'id']])
+        container = df.loc[mask, ['created_utc', 'id']]
         container['ticker'] = ticker
         df2 = df2.append(container)
         pbar.update(1)
