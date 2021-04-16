@@ -1,0 +1,2205 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20211.21.0320.1853                               -->
+<workbook source-build='2021.1.0 (20211.21.0320.1853)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='ticker_search.csv (Mehrere Verbindungen)' inline='true' name='federated.0yqpr0w06a76vw17jsdlz1yrfwe5' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='ticker_search' name='textscan.0oxqex10bjva251fbfoi415yz9zm'>
+            <connection class='textscan' directory='/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit' filename='reddit_posts.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='stats2' name='textscan.0nmlyrn0epucqi17yxezw0aoz0gu'>
+            <connection class='textscan' directory='/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit' filename='stats_int.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='Yahoo_Finance_Data' name='textscan.1pspeok1pakyv61bp6s2u0z79u9f'>
+            <connection class='textscan' directory='/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/00_Yahoo_Finance' filename='Yahoo_Finance_Data.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.1pspeok1pakyv61bp6s2u0z79u9f' name='Yahoo_Finance_Data.csv' table='[Yahoo_Finance_Data#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='de_CH' separator=','>
+            <column datatype='date' name='Date' ordinal='0' />
+            <column datatype='real' name='Open' ordinal='1' />
+            <column datatype='real' name='High' ordinal='2' />
+            <column datatype='real' name='Low' ordinal='3' />
+            <column datatype='real' name='Close' ordinal='4' />
+            <column datatype='real' name='Adj Close' ordinal='5' />
+            <column datatype='integer' name='Volume' ordinal='6' />
+            <column datatype='string' name='Stock' ordinal='7' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+          <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='stats_int.csv' table='[stats_int#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='de_CH' separator=';'>
+              <column datatype='date' name='date' ordinal='0' />
+              <column datatype='integer' name='total_subs' ordinal='1' />
+              <column datatype='integer' name='total_posts_per_day' ordinal='2' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='reddit_posts.csv' table='[reddit_posts#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='de_CH' separator='|'>
+              <column datatype='datetime' name='created_utc' ordinal='0' />
+              <column datatype='string' name='author' ordinal='1' />
+              <column datatype='string' name='author_fullname' ordinal='2' />
+              <column datatype='string' name='author_flair_text' ordinal='3' />
+              <column datatype='string' name='link_flair_text' ordinal='4' />
+              <column datatype='string' name='url' ordinal='5' />
+              <column datatype='string' name='title' ordinal='6' />
+              <column datatype='string' name='selftext' ordinal='7' />
+              <column datatype='integer' name='num_comments' ordinal='8' />
+              <column datatype='integer' name='num_crossposts' ordinal='9' />
+              <column datatype='integer' name='score' ordinal='10' />
+              <column datatype='real' name='upvote_ratio' ordinal='11' />
+              <column datatype='string' name='id' ordinal='12' />
+              <column datatype='boolean' name='is_crosspostable' ordinal='13' />
+              <column datatype='boolean' name='is_meta' ordinal='14' />
+              <column datatype='boolean' name='is_self' ordinal='15' />
+              <column datatype='boolean' name='is_video' ordinal='16' />
+              <column datatype='boolean' name='no_follow' ordinal='17' />
+              <column datatype='boolean' name='allow_live_comments' ordinal='18' />
+              <column datatype='string' name='all_awardings' ordinal='19' />
+              <column datatype='integer' name='total_awards_received' ordinal='20' />
+              <column datatype='string' name='awarders' ordinal='21' />
+              <column datatype='string' name='gildings' ordinal='22' />
+              <column datatype='date' name='date' ordinal='23' />
+              <column datatype='string' name='ticker_list' ordinal='24' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='ticker_per_day.csv' table='[ticker_per_day#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='de_CH' separator='|'>
+              <column datatype='datetime' name='created_utc' ordinal='0' />
+              <column datatype='string' name='id' ordinal='1' />
+              <column datatype='string' name='ticker' ordinal='2' />
+              <column datatype='date' name='date' ordinal='3' />
+            </columns>
+          </relation>
+          <relation connection='textscan.1pspeok1pakyv61bp6s2u0z79u9f' name='Yahoo_Finance_Data.csv' table='[Yahoo_Finance_Data#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='de_CH' separator=','>
+              <column datatype='date' name='Date' ordinal='0' />
+              <column datatype='real' name='Open' ordinal='1' />
+              <column datatype='real' name='High' ordinal='2' />
+              <column datatype='real' name='Low' ordinal='3' />
+              <column datatype='real' name='Close' ordinal='4' />
+              <column datatype='real' name='Adj Close' ordinal='5' />
+              <column datatype='integer' name='Volume' ordinal='6' />
+              <column datatype='string' name='Stock' ordinal='7' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='ticker_name.csv' table='[ticker_name#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='de_CH' separator='|'>
+              <column datatype='string' name='ticker' ordinal='0' />
+              <column datatype='string' name='comp_name' ordinal='1' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='reddit_posts_sent_full.csv' table='[reddit_posts_sent_full#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='de_CH' separator='|'>
+              <column datatype='datetime' name='created_utc' ordinal='0' />
+              <column datatype='string' name='author' ordinal='1' />
+              <column datatype='string' name='author_fullname' ordinal='2' />
+              <column datatype='string' name='author_flair_text' ordinal='3' />
+              <column datatype='string' name='link_flair_text' ordinal='4' />
+              <column datatype='string' name='url' ordinal='5' />
+              <column datatype='string' name='title' ordinal='6' />
+              <column datatype='string' name='selftext' ordinal='7' />
+              <column datatype='integer' name='num_comments' ordinal='8' />
+              <column datatype='integer' name='num_crossposts' ordinal='9' />
+              <column datatype='integer' name='score' ordinal='10' />
+              <column datatype='real' name='upvote_ratio' ordinal='11' />
+              <column datatype='string' name='id' ordinal='12' />
+              <column datatype='boolean' name='is_crosspostable' ordinal='13' />
+              <column datatype='boolean' name='is_meta' ordinal='14' />
+              <column datatype='boolean' name='is_self' ordinal='15' />
+              <column datatype='boolean' name='is_video' ordinal='16' />
+              <column datatype='boolean' name='no_follow' ordinal='17' />
+              <column datatype='boolean' name='allow_live_comments' ordinal='18' />
+              <column datatype='string' name='all_awardings' ordinal='19' />
+              <column datatype='integer' name='total_awards_received' ordinal='20' />
+              <column datatype='string' name='awarders' ordinal='21' />
+              <column datatype='string' name='gildings' ordinal='22' />
+              <column datatype='date' name='date' ordinal='23' />
+              <column datatype='string' name='ticker_list' ordinal='24' />
+              <column datatype='string' name='sent' ordinal='25' />
+            </columns>
+          </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <cols>
+          <map key='[Adj Close]' value='[Yahoo_Finance_Data.csv].[Adj Close]' />
+          <map key='[Close]' value='[Yahoo_Finance_Data.csv].[Close]' />
+          <map key='[Date]' value='[Yahoo_Finance_Data.csv].[Date]' />
+          <map key='[High]' value='[Yahoo_Finance_Data.csv].[High]' />
+          <map key='[Low]' value='[Yahoo_Finance_Data.csv].[Low]' />
+          <map key='[Open]' value='[Yahoo_Finance_Data.csv].[Open]' />
+          <map key='[Stock]' value='[Yahoo_Finance_Data.csv].[Stock]' />
+          <map key='[Volume]' value='[Yahoo_Finance_Data.csv].[Volume]' />
+          <map key='[all_awardings (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[all_awardings]' />
+          <map key='[all_awardings]' value='[reddit_posts.csv].[all_awardings]' />
+          <map key='[allow_live_comments (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[allow_live_comments]' />
+          <map key='[allow_live_comments]' value='[reddit_posts.csv].[allow_live_comments]' />
+          <map key='[author (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[author]' />
+          <map key='[author]' value='[reddit_posts.csv].[author]' />
+          <map key='[author_flair_text (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[author_flair_text]' />
+          <map key='[author_flair_text]' value='[reddit_posts.csv].[author_flair_text]' />
+          <map key='[author_fullname (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[author_fullname]' />
+          <map key='[author_fullname]' value='[reddit_posts.csv].[author_fullname]' />
+          <map key='[awarders (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[awarders]' />
+          <map key='[awarders]' value='[reddit_posts.csv].[awarders]' />
+          <map key='[comp_name]' value='[ticker_name.csv].[comp_name]' />
+          <map key='[created_utc (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[created_utc]' />
+          <map key='[created_utc (ticker_per_day.csv)]' value='[ticker_per_day.csv].[created_utc]' />
+          <map key='[created_utc]' value='[reddit_posts.csv].[created_utc]' />
+          <map key='[date (reddit_posts.csv)]' value='[reddit_posts.csv].[date]' />
+          <map key='[date (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[date]' />
+          <map key='[date (ticker_per_day.csv)]' value='[ticker_per_day.csv].[date]' />
+          <map key='[date]' value='[stats_int.csv].[date]' />
+          <map key='[gildings (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[gildings]' />
+          <map key='[gildings]' value='[reddit_posts.csv].[gildings]' />
+          <map key='[id (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[id]' />
+          <map key='[id (ticker_per_day.csv)]' value='[ticker_per_day.csv].[id]' />
+          <map key='[id]' value='[reddit_posts.csv].[id]' />
+          <map key='[is_crosspostable (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[is_crosspostable]' />
+          <map key='[is_crosspostable]' value='[reddit_posts.csv].[is_crosspostable]' />
+          <map key='[is_meta (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[is_meta]' />
+          <map key='[is_meta]' value='[reddit_posts.csv].[is_meta]' />
+          <map key='[is_self (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[is_self]' />
+          <map key='[is_self]' value='[reddit_posts.csv].[is_self]' />
+          <map key='[is_video (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[is_video]' />
+          <map key='[is_video]' value='[reddit_posts.csv].[is_video]' />
+          <map key='[link_flair_text (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[link_flair_text]' />
+          <map key='[link_flair_text]' value='[reddit_posts.csv].[link_flair_text]' />
+          <map key='[no_follow (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[no_follow]' />
+          <map key='[no_follow]' value='[reddit_posts.csv].[no_follow]' />
+          <map key='[num_comments (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[num_comments]' />
+          <map key='[num_comments]' value='[reddit_posts.csv].[num_comments]' />
+          <map key='[num_crossposts (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[num_crossposts]' />
+          <map key='[num_crossposts]' value='[reddit_posts.csv].[num_crossposts]' />
+          <map key='[score (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[score]' />
+          <map key='[score]' value='[reddit_posts.csv].[score]' />
+          <map key='[selftext (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[selftext]' />
+          <map key='[selftext]' value='[reddit_posts.csv].[selftext]' />
+          <map key='[sent]' value='[reddit_posts_sent_full.csv].[sent]' />
+          <map key='[ticker (ticker_per_day.csv)]' value='[ticker_per_day.csv].[ticker]' />
+          <map key='[ticker]' value='[ticker_name.csv].[ticker]' />
+          <map key='[ticker_list (reddit_posts.csv)]' value='[reddit_posts.csv].[ticker_list]' />
+          <map key='[ticker_list]' value='[reddit_posts_sent_full.csv].[ticker_list]' />
+          <map key='[title (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[title]' />
+          <map key='[title]' value='[reddit_posts.csv].[title]' />
+          <map key='[total_awards_received (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[total_awards_received]' />
+          <map key='[total_awards_received]' value='[reddit_posts.csv].[total_awards_received]' />
+          <map key='[total_posts_per_day]' value='[stats_int.csv].[total_posts_per_day]' />
+          <map key='[total_subs]' value='[stats_int.csv].[total_subs]' />
+          <map key='[upvote_ratio (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[upvote_ratio]' />
+          <map key='[upvote_ratio]' value='[reddit_posts.csv].[upvote_ratio]' />
+          <map key='[url (reddit_posts_sent_full.csv)]' value='[reddit_posts_sent_full.csv].[url]' />
+          <map key='[url]' value='[reddit_posts.csv].[url]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[stats_int.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;de&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;CHF&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;de_CH&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;&apos;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;de&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;CHF&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;|&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;de_CH&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;&apos;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[ticker_per_day.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;de&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;CHF&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;|&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;de_CH&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;&apos;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;de&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;CHF&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;de_CH&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;&apos;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[ticker_name.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;de&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;CHF&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;|&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;de_CH&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;&apos;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;de&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;CHF&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;|&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;de_CH&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;&apos;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[stats_int.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[stats_int.csv_E98C1E525F0F4DD5BD2F9E00EF16964E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_subs</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_subs]</local-name>
+            <parent-name>[stats_int.csv]</parent-name>
+            <remote-alias>total_subs</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[stats_int.csv_E98C1E525F0F4DD5BD2F9E00EF16964E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_posts_per_day</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_posts_per_day]</local-name>
+            <parent-name>[stats_int.csv]</parent-name>
+            <remote-alias>total_posts_per_day</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[stats_int.csv_E98C1E525F0F4DD5BD2F9E00EF16964E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_utc</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[created_utc]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>created_utc</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>author</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[author]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>author</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>author_fullname</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[author_fullname]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>author_fullname</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>author_flair_text</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[author_flair_text]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>author_flair_text</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>link_flair_text</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[link_flair_text]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>link_flair_text</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>url</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[url]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>url</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>title</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[title]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>title</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>selftext</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[selftext]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>selftext</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_comments</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_comments]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>num_comments</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_crossposts</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_crossposts]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>num_crossposts</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[score]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>score</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>upvote_ratio</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[upvote_ratio]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>upvote_ratio</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_crosspostable</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_crosspostable]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>is_crosspostable</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_meta</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_meta]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>is_meta</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_self</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_self]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>is_self</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_video</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_video]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>is_video</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>no_follow</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[no_follow]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>no_follow</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>allow_live_comments</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[allow_live_comments]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>allow_live_comments</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>all_awardings</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[all_awardings]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>all_awardings</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_awards_received</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_awards_received]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>total_awards_received</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>awarders</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[awarders]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>awarders</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gildings</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[gildings]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>gildings</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date (reddit_posts.csv)]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ticker_list</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ticker_list (reddit_posts.csv)]</local-name>
+            <parent-name>[reddit_posts.csv]</parent-name>
+            <remote-alias>ticker_list</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_utc</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[created_utc (ticker_per_day.csv)]</local-name>
+            <parent-name>[ticker_per_day.csv]</parent-name>
+            <remote-alias>created_utc</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ticker_per_day.csv_F46BD1E59CCB4C05B18CD5557835DAB9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[id (ticker_per_day.csv)]</local-name>
+            <parent-name>[ticker_per_day.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ticker_per_day.csv_F46BD1E59CCB4C05B18CD5557835DAB9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ticker</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ticker (ticker_per_day.csv)]</local-name>
+            <parent-name>[ticker_per_day.csv]</parent-name>
+            <remote-alias>ticker</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ticker_per_day.csv_F46BD1E59CCB4C05B18CD5557835DAB9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date (ticker_per_day.csv)]</local-name>
+            <parent-name>[ticker_per_day.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ticker_per_day.csv_F46BD1E59CCB4C05B18CD5557835DAB9]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Open</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Open]</local-name>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias>Open</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>High</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[High]</local-name>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias>High</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Low</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Low]</local-name>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias>Low</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Close</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Close]</local-name>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias>Close</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Adj Close</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Adj Close]</local-name>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias>Adj Close</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Volume</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Volume]</local-name>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias>Volume</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Stock</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Stock]</local-name>
+            <parent-name>[Yahoo_Finance_Data.csv]</parent-name>
+            <remote-alias>Stock</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ticker</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ticker]</local-name>
+            <parent-name>[ticker_name.csv]</parent-name>
+            <remote-alias>ticker</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ticker_name.csv_634653C4D5D74BD19CDED46934F141C5]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>comp_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[comp_name]</local-name>
+            <parent-name>[ticker_name.csv]</parent-name>
+            <remote-alias>comp_name</remote-alias>
+            <ordinal>41</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[ticker_name.csv_634653C4D5D74BD19CDED46934F141C5]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>created_utc</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[created_utc (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>created_utc</remote-alias>
+            <ordinal>42</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>author</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[author (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>author</remote-alias>
+            <ordinal>43</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>author_fullname</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[author_fullname (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>author_fullname</remote-alias>
+            <ordinal>44</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>author_flair_text</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[author_flair_text (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>author_flair_text</remote-alias>
+            <ordinal>45</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>link_flair_text</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[link_flair_text (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>link_flair_text</remote-alias>
+            <ordinal>46</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>url</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[url (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>url</remote-alias>
+            <ordinal>47</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>title</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[title (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>title</remote-alias>
+            <ordinal>48</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>selftext</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[selftext (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>selftext</remote-alias>
+            <ordinal>49</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_comments</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_comments (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>num_comments</remote-alias>
+            <ordinal>50</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_crossposts</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_crossposts (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>num_crossposts</remote-alias>
+            <ordinal>51</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[score (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>score</remote-alias>
+            <ordinal>52</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>upvote_ratio</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[upvote_ratio (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>upvote_ratio</remote-alias>
+            <ordinal>53</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[id (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>54</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_crosspostable</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_crosspostable (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>is_crosspostable</remote-alias>
+            <ordinal>55</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_meta</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_meta (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>is_meta</remote-alias>
+            <ordinal>56</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_self</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_self (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>is_self</remote-alias>
+            <ordinal>57</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_video</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[is_video (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>is_video</remote-alias>
+            <ordinal>58</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>no_follow</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[no_follow (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>no_follow</remote-alias>
+            <ordinal>59</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>allow_live_comments</remote-name>
+            <remote-type>11</remote-type>
+            <local-name>[allow_live_comments (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>allow_live_comments</remote-alias>
+            <ordinal>60</ordinal>
+            <local-type>boolean</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>all_awardings</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[all_awardings (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>all_awardings</remote-alias>
+            <ordinal>61</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_awards_received</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[total_awards_received (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>total_awards_received</remote-alias>
+            <ordinal>62</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>awarders</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[awarders (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>awarders</remote-alias>
+            <ordinal>63</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gildings</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[gildings (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>gildings</remote-alias>
+            <ordinal>64</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[date (reddit_posts_sent_full.csv)]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>65</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ticker_list</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ticker_list]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>ticker_list</remote-alias>
+            <ordinal>66</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sent</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[sent]</local-name>
+            <parent-name>[reddit_posts_sent_full.csv]</parent-name>
+            <remote-alias>sent</remote-alias>
+            <ordinal>67</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LDE_RDE' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='real' name='[Adj Close]' role='measure' type='quantitative' />
+      <column caption='Closing Price' datatype='real' name='[Calculation_2082563014223413250]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IFNULL(&#10;    SUM([Close]),&#10;    PREVIOUS_VALUE(0)&#10;)'>
+          <table-calc ordering-type='Rows' />
+        </calculation>
+      </column>
+      <column caption='Ticker Count' datatype='integer' name='[Calculation_2715740974698921986]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IFNULL(&#10;    COUNT([ticker (ticker_per_day.csv)]),&#10;    0&#10;)' />
+      </column>
+      <column caption='Ticker / Total Posts' datatype='real' default-format='p0.00%' name='[Calculation_654851562186756104]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='ZN(COUNT([list])/ATTR([total_posts_per_day]))' />
+      </column>
+      <column datatype='real' name='[Close]' role='measure' type='quantitative' />
+      <column caption='Id (ifnull)' datatype='integer' name='[Closing Price (Kopie)_903745812008632320]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='IFNULL(&#10;    COUNT([id]),&#10;    0&#10;)' />
+      </column>
+      <column caption='Date1' datatype='date' name='[Date]' role='dimension' type='ordinal' />
+      <column datatype='real' name='[High]' role='measure' type='quantitative' />
+      <column datatype='real' name='[Low]' role='measure' type='quantitative' />
+      <column datatype='real' name='[Open]' role='measure' type='quantitative' />
+      <column caption='Stock (Yahoo Finance Data.csv1)' datatype='string' name='[Stock (Yahoo_Finance_Data.csv1)]' role='dimension' type='nominal' />
+      <column caption='Stock1' datatype='string' name='[Stock]' role='dimension' type='nominal' />
+      <column caption='Ticker Mentions Count' datatype='integer' name='[Ticker Mentions (Kopie)_2082563014219702273]' role='measure' type='ordinal'>
+        <calculation class='tableau' formula='ZN(LOOKUP(COUNT([list])))'>
+          <table-calc ordering-field='' ordering-type='Field' tc-options='Fixed'>
+            <address />
+          </table-calc>
+        </calculation>
+      </column>
+      <column datatype='integer' name='[Volume]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='Yahoo_Finance_Data.csv' datatype='table' name='[__tableau_internal_object_id__].[Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='reddit_posts.csv' datatype='table' name='[__tableau_internal_object_id__].[reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='reddit_posts_sent_full.csv' datatype='table' name='[__tableau_internal_object_id__].[reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='stats_int.csv' datatype='table' name='[__tableau_internal_object_id__].[stats_int.csv_E98C1E525F0F4DD5BD2F9E00EF16964E]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='ticker_name.csv' datatype='table' name='[__tableau_internal_object_id__].[ticker_name.csv_634653C4D5D74BD19CDED46934F141C5]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='ticker_per_day.csv' datatype='table' name='[__tableau_internal_object_id__].[ticker_per_day.csv_F46BD1E59CCB4C05B18CD5557835DAB9]' role='measure' type='quantitative' />
+      <column caption='All Awardings (Reddit Posts Sent Full.Csv)' datatype='string' name='[all_awardings (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='All Awardings' datatype='string' name='[all_awardings]' role='dimension' type='nominal' />
+      <column caption='Allow Live Comments (Reddit Posts Sent Full.Csv)' datatype='boolean' name='[allow_live_comments (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Allow Live Comments' datatype='boolean' name='[allow_live_comments]' role='dimension' type='nominal' />
+      <column caption='Author (Reddit Posts Sent Full.Csv)' datatype='string' name='[author (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Author' datatype='string' name='[author]' role='dimension' type='nominal' />
+      <column caption='Author Flair Text (Reddit Posts Sent Full.Csv)' datatype='string' name='[author_flair_text (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Author Flair Text' datatype='string' name='[author_flair_text]' role='dimension' type='nominal' />
+      <column caption='Author Fullname (Reddit Posts Sent Full.Csv)' datatype='string' name='[author_fullname (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Author Fullname' datatype='string' name='[author_fullname]' role='dimension' type='nominal' />
+      <column caption='Awarders (Reddit Posts Sent Full.Csv)' datatype='string' name='[awarders (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Awarders' datatype='string' name='[awarders]' role='dimension' type='nominal' />
+      <column caption='Comp Name' datatype='string' name='[comp_name]' role='dimension' type='nominal' />
+      <column caption='Created Utc (Reddit Posts Sent Full.Csv)' datatype='datetime' name='[created_utc (reddit_posts_sent_full.csv)]' role='dimension' type='ordinal' />
+      <column caption='Created Utc (Ticker Per Day.Csv)' datatype='datetime' name='[created_utc (ticker_per_day.csv)]' role='dimension' type='ordinal' />
+      <column caption='Created Utc' datatype='datetime' name='[created_utc]' role='dimension' type='ordinal' />
+      <column caption='Date (Reddit Posts.Csv)' datatype='date' name='[date (reddit_posts.csv)]' role='dimension' type='ordinal' />
+      <column caption='Date (Reddit Posts Sent Full.Csv)' datatype='date' name='[date (reddit_posts_sent_full.csv)]' role='dimension' type='ordinal' />
+      <column caption='Date (Ticker Per Day.Csv)' datatype='date' name='[date (ticker_per_day.csv)]' role='dimension' type='ordinal' />
+      <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+      <column caption='Gildings (Reddit Posts Sent Full.Csv)' datatype='string' name='[gildings (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Gildings' datatype='string' name='[gildings]' role='dimension' type='nominal' />
+      <column caption='Id (Reddit Posts Sent Full.Csv)' datatype='string' name='[id (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Id (Ticker Per Day.Csv)' datatype='string' name='[id (ticker_per_day.csv)]' role='dimension' type='nominal' />
+      <column caption='Id' datatype='string' name='[id]' role='dimension' type='nominal' />
+      <column caption='Is Crosspostable (Reddit Posts Sent Full.Csv)' datatype='boolean' name='[is_crosspostable (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Is Crosspostable' datatype='boolean' name='[is_crosspostable]' role='dimension' type='nominal' />
+      <column caption='Is Meta (Reddit Posts Sent Full.Csv)' datatype='boolean' name='[is_meta (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Is Meta' datatype='boolean' name='[is_meta]' role='dimension' type='nominal' />
+      <column caption='Is Self (Reddit Posts Sent Full.Csv)' datatype='boolean' name='[is_self (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Is Self' datatype='boolean' name='[is_self]' role='dimension' type='nominal' />
+      <column caption='Is Video (Reddit Posts Sent Full.Csv)' datatype='boolean' name='[is_video (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Is Video' datatype='boolean' name='[is_video]' role='dimension' type='nominal' />
+      <column caption='Link Flair Text (Reddit Posts Sent Full.Csv)' datatype='string' name='[link_flair_text (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Link Flair Text' datatype='string' name='[link_flair_text]' role='dimension' type='nominal' />
+      <column caption='No Follow (Reddit Posts Sent Full.Csv)' datatype='boolean' name='[no_follow (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='No Follow' datatype='boolean' name='[no_follow]' role='dimension' type='nominal' />
+      <column caption='Num Comments (Reddit Posts Sent Full.Csv)' datatype='integer' name='[num_comments (reddit_posts_sent_full.csv)]' role='measure' type='quantitative' />
+      <column caption='Num Comments' datatype='integer' name='[num_comments]' role='measure' type='quantitative' />
+      <column caption='Num Crossposts (Reddit Posts Sent Full.Csv)' datatype='integer' name='[num_crossposts (reddit_posts_sent_full.csv)]' role='measure' type='quantitative' />
+      <column caption='Num Crossposts' datatype='integer' name='[num_crossposts]' role='measure' type='quantitative' />
+      <column caption='Score (Reddit Posts Sent Full.Csv)' datatype='integer' name='[score (reddit_posts_sent_full.csv)]' role='measure' type='quantitative' />
+      <column caption='Score' datatype='integer' name='[score]' role='measure' type='quantitative' />
+      <column caption='Selftext (Reddit Posts Sent Full.Csv)' datatype='string' name='[selftext (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Selftext' datatype='string' name='[selftext]' role='dimension' type='nominal' />
+      <column caption='Sent' datatype='string' name='[sent]' role='dimension' type='nominal' />
+      <column caption='Ticker (Ticker Per Day.Csv)' datatype='string' name='[ticker (ticker_per_day.csv)]' role='dimension' type='nominal' />
+      <column caption='Ticker' datatype='string' name='[ticker]' role='dimension' type='nominal' />
+      <column caption='Ticker List' datatype='string' name='[ticker_list]' role='dimension' type='nominal' />
+      <column caption='Title (Reddit Posts Sent Full.Csv)' datatype='string' name='[title (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Title' datatype='string' name='[title]' role='dimension' type='nominal' />
+      <column caption='Total Awards Received (Reddit Posts Sent Full.Csv)' datatype='integer' name='[total_awards_received (reddit_posts_sent_full.csv)]' role='measure' type='quantitative' />
+      <column caption='Total Awards Received' datatype='integer' name='[total_awards_received]' role='measure' type='quantitative' />
+      <column caption='Total Posts Per Day' datatype='integer' name='[total_posts_per_day]' role='dimension' type='quantitative' />
+      <column caption='Total Subs' datatype='integer' name='[total_subs]' role='measure' type='quantitative' />
+      <column caption='Upvote Ratio (Reddit Posts Sent Full.Csv)' datatype='real' name='[upvote_ratio (reddit_posts_sent_full.csv)]' role='measure' type='quantitative' />
+      <column caption='Upvote Ratio' datatype='real' name='[upvote_ratio]' role='measure' type='quantitative' />
+      <column caption='Url (Reddit Posts Sent Full.Csv)' datatype='string' name='[url (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+      <column caption='Url' datatype='string' name='[url]' role='dimension' type='nominal' />
+      <column-instance column='[Adj Close]' derivation='Attribute' name='[attr:Adj Close:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_posts_per_day]' derivation='Attribute' name='[attr:total_posts_per_day:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_posts_per_day]' derivation='Avg' name='[avg:total_posts_per_day:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_posts_per_day]' derivation='Count' name='[cnt:total_posts_per_day:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Close]' derivation='CountD' name='[ctd:Close:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_654851562186756104]' derivation='User' name='[cum:usr:Calculation_654851562186756104:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Sum' ordering-type='Rows' type='CumTotal' />
+      </column-instance>
+      <column-instance column='[Calculation_654851562186756104]' derivation='User' name='[diff:usr:Calculation_654851562186756104:qk]' pivot='key' type='quantitative'>
+        <table-calc diff-options='Relative' ordering-type='Rows' type='Difference'>
+          <address>
+            <value>-1</value>
+          </address>
+        </table-calc>
+      </column-instance>
+      <column-instance column='[Adj Close]' derivation='Sum' name='[sum:Adj Close:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Close]' derivation='Sum' name='[sum:Close:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[High]' derivation='Sum' name='[sum:High:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Low]' derivation='Sum' name='[sum:Low:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Open]' derivation='Sum' name='[sum:Open:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Volume]' derivation='Sum' name='[sum:Volume:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[total_posts_per_day]' derivation='Sum' name='[sum:total_posts_per_day:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_2082563014223413250]' derivation='User' name='[usr:Calculation_2082563014223413250:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-type='Rows' />
+      </column-instance>
+      <column-instance column='[Calculation_2715740974698921986]' derivation='User' name='[usr:Calculation_2715740974698921986:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Calculation_654851562186756104]' derivation='User' name='[usr:Calculation_654851562186756104:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Closing Price (Kopie)_903745812008632320]' derivation='User' name='[usr:Closing Price (Kopie)_903745812008632320:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Ticker Mentions (Kopie)_2082563014219702273]' derivation='User' name='[usr:Ticker Mentions (Kopie)_2082563014219702273:qk]' pivot='key' type='quantitative'>
+        <table-calc ordering-field='' ordering-type='Field' tc-options='Fixed'>
+          <address />
+        </table-calc>
+      </column-instance>
+      <column-instance column='[Calculation_654851562186756104]' derivation='User' name='[win:usr:Calculation_654851562186756104:qk]' pivot='key' type='quantitative'>
+        <table-calc aggregation='Avg' from='-2' ordering-type='Rows' to='0' type='WindowTotal' window-options='IncludeCurrent' />
+      </column-instance>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[cum:usr:Calculation_654851562186756104:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[diff:usr:Calculation_654851562186756104:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[usr:Calculation_654851562186756104:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[usr:Closing Price (Kopie)_903745812008632320:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[win:usr:Calculation_654851562186756104:qk]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5]&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:High:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[cnt:selftext:qk]&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Open:qk]&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Low:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[cnt:ticker_mentions:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[usr:Calculation_2082563014223413250:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[usr:Ticker Mentions (Kopie)_2082563014219702273:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[ctd:Close:qk]&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Close:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[avg:total_awards_received:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[avg:total_posts_per_day:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[cnt:total_posts_per_day:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:total_posts_per_day:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Volume:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[usr:Calculation_2715740974698921986:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:Adj Close:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[cnt:Adj Close:qk]&quot;</bucket>
+            </map>
+            <map to='#ff9da7'>
+              <bucket>&quot;[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Adj Close:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Schweiz&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Yahoo_Finance_Data.csv' id='Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074'>
+            <properties context=''>
+              <relation connection='textscan.1pspeok1pakyv61bp6s2u0z79u9f' name='Yahoo_Finance_Data.csv' table='[Yahoo_Finance_Data#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='de_CH' separator=','>
+                  <column datatype='date' name='Date' ordinal='0' />
+                  <column datatype='real' name='Open' ordinal='1' />
+                  <column datatype='real' name='High' ordinal='2' />
+                  <column datatype='real' name='Low' ordinal='3' />
+                  <column datatype='real' name='Close' ordinal='4' />
+                  <column datatype='real' name='Adj Close' ordinal='5' />
+                  <column datatype='integer' name='Volume' ordinal='6' />
+                  <column datatype='string' name='Stock' ordinal='7' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='reddit_posts.csv' id='reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E'>
+            <properties context=''>
+              <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='reddit_posts.csv' table='[reddit_posts#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='de_CH' separator='|'>
+                  <column datatype='datetime' name='created_utc' ordinal='0' />
+                  <column datatype='string' name='author' ordinal='1' />
+                  <column datatype='string' name='author_fullname' ordinal='2' />
+                  <column datatype='string' name='author_flair_text' ordinal='3' />
+                  <column datatype='string' name='link_flair_text' ordinal='4' />
+                  <column datatype='string' name='url' ordinal='5' />
+                  <column datatype='string' name='title' ordinal='6' />
+                  <column datatype='string' name='selftext' ordinal='7' />
+                  <column datatype='integer' name='num_comments' ordinal='8' />
+                  <column datatype='integer' name='num_crossposts' ordinal='9' />
+                  <column datatype='integer' name='score' ordinal='10' />
+                  <column datatype='real' name='upvote_ratio' ordinal='11' />
+                  <column datatype='string' name='id' ordinal='12' />
+                  <column datatype='boolean' name='is_crosspostable' ordinal='13' />
+                  <column datatype='boolean' name='is_meta' ordinal='14' />
+                  <column datatype='boolean' name='is_self' ordinal='15' />
+                  <column datatype='boolean' name='is_video' ordinal='16' />
+                  <column datatype='boolean' name='no_follow' ordinal='17' />
+                  <column datatype='boolean' name='allow_live_comments' ordinal='18' />
+                  <column datatype='string' name='all_awardings' ordinal='19' />
+                  <column datatype='integer' name='total_awards_received' ordinal='20' />
+                  <column datatype='string' name='awarders' ordinal='21' />
+                  <column datatype='string' name='gildings' ordinal='22' />
+                  <column datatype='date' name='date' ordinal='23' />
+                  <column datatype='string' name='ticker_list' ordinal='24' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='reddit_posts_sent_full.csv' id='reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4'>
+            <properties context=''>
+              <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='reddit_posts_sent_full.csv' table='[reddit_posts_sent_full#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='de_CH' separator='|'>
+                  <column datatype='datetime' name='created_utc' ordinal='0' />
+                  <column datatype='string' name='author' ordinal='1' />
+                  <column datatype='string' name='author_fullname' ordinal='2' />
+                  <column datatype='string' name='author_flair_text' ordinal='3' />
+                  <column datatype='string' name='link_flair_text' ordinal='4' />
+                  <column datatype='string' name='url' ordinal='5' />
+                  <column datatype='string' name='title' ordinal='6' />
+                  <column datatype='string' name='selftext' ordinal='7' />
+                  <column datatype='integer' name='num_comments' ordinal='8' />
+                  <column datatype='integer' name='num_crossposts' ordinal='9' />
+                  <column datatype='integer' name='score' ordinal='10' />
+                  <column datatype='real' name='upvote_ratio' ordinal='11' />
+                  <column datatype='string' name='id' ordinal='12' />
+                  <column datatype='boolean' name='is_crosspostable' ordinal='13' />
+                  <column datatype='boolean' name='is_meta' ordinal='14' />
+                  <column datatype='boolean' name='is_self' ordinal='15' />
+                  <column datatype='boolean' name='is_video' ordinal='16' />
+                  <column datatype='boolean' name='no_follow' ordinal='17' />
+                  <column datatype='boolean' name='allow_live_comments' ordinal='18' />
+                  <column datatype='string' name='all_awardings' ordinal='19' />
+                  <column datatype='integer' name='total_awards_received' ordinal='20' />
+                  <column datatype='string' name='awarders' ordinal='21' />
+                  <column datatype='string' name='gildings' ordinal='22' />
+                  <column datatype='date' name='date' ordinal='23' />
+                  <column datatype='string' name='ticker_list' ordinal='24' />
+                  <column datatype='string' name='sent' ordinal='25' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='stats_int.csv' id='stats_int.csv_E98C1E525F0F4DD5BD2F9E00EF16964E'>
+            <properties context=''>
+              <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='stats_int.csv' table='[stats_int#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='de_CH' separator=';'>
+                  <column datatype='date' name='date' ordinal='0' />
+                  <column datatype='integer' name='total_subs' ordinal='1' />
+                  <column datatype='integer' name='total_posts_per_day' ordinal='2' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='ticker_name.csv' id='ticker_name.csv_634653C4D5D74BD19CDED46934F141C5'>
+            <properties context=''>
+              <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='ticker_name.csv' table='[ticker_name#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='de_CH' separator='|'>
+                  <column datatype='string' name='ticker' ordinal='0' />
+                  <column datatype='string' name='comp_name' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+          <object caption='ticker_per_day.csv' id='ticker_per_day.csv_F46BD1E59CCB4C05B18CD5557835DAB9'>
+            <properties context=''>
+              <relation connection='textscan.0oxqex10bjva251fbfoi415yz9zm' name='ticker_per_day.csv' table='[ticker_per_day#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='de_CH' separator='|'>
+                  <column datatype='datetime' name='created_utc' ordinal='0' />
+                  <column datatype='string' name='id' ordinal='1' />
+                  <column datatype='string' name='ticker' ordinal='2' />
+                  <column datatype='date' name='date' ordinal='3' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[ticker (ticker_per_day.csv)]' />
+              <expression op='[Stock]' />
+            </expression>
+            <first-end-point object-id='ticker_per_day.csv_F46BD1E59CCB4C05B18CD5557835DAB9' />
+            <second-end-point object-id='Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[date]' />
+              <expression op='[date (reddit_posts.csv)]' />
+            </expression>
+            <first-end-point object-id='stats_int.csv_E98C1E525F0F4DD5BD2F9E00EF16964E' />
+            <second-end-point object-id='reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[date]' />
+              <expression op='[date (reddit_posts_sent_full.csv)]' />
+            </expression>
+            <first-end-point object-id='stats_int.csv_E98C1E525F0F4DD5BD2F9E00EF16964E' />
+            <second-end-point object-id='reddit_posts_sent_full.csv_53207E81535E41CC8DE5CE93B52409B4' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[Stock]' />
+              <expression op='[ticker]' />
+            </expression>
+            <first-end-point object-id='Yahoo_Finance_Data.csv_501A8BFAD4784C1BB6633AA6DF8EE074' />
+            <second-end-point object-id='ticker_name.csv_634653C4D5D74BD19CDED46934F141C5' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[date (reddit_posts.csv)]' />
+              <expression op='[date (ticker_per_day.csv)]' />
+            </expression>
+            <first-end-point object-id='reddit_posts.csv_9F3D873B63A040E6B2C1E3A3579AD93E' />
+            <second-end-point object-id='ticker_per_day.csv_F46BD1E59CCB4C05B18CD5557835DAB9' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Blatt 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='ticker_search.csv (Mehrere Verbindungen)' name='federated.0yqpr0w06a76vw17jsdlz1yrfwe5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0yqpr0w06a76vw17jsdlz1yrfwe5'>
+            <column-instance column='[total_posts_per_day]' derivation='Attribute' name='[attr:total_posts_per_day:qk]' pivot='key' type='quantitative' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[date]' derivation='Day-Trunc' name='[tdy:date:qk]' pivot='key' type='quantitative' />
+            <column caption='Total Posts Per Day' datatype='integer' name='[total_posts_per_day]' role='dimension' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]'>
+            <groupfilter function='level-members' level='[:Measure Names]' />
+          </filter>
+          <slices>
+            <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='omit-on-special' field='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]' value='false' />
+            <format attr='break-on-special' field='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]' value='false' />
+            <format attr='show-null-value-warning' field='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]' value='false' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]' />
+              <color column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]</rows>
+        <cols>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[tdy:date:qk]</cols>
+        <show-full-range>
+          <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[Date]</column>
+          <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[date]</column>
+        </show-full-range>
+      </table>
+      <simple-id uuid='{092F24BF-3098-4A27-83CA-8A690294A6D9}' />
+    </worksheet>
+    <worksheet name='Blatt 1 (2)'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='ticker_search.csv (Mehrere Verbindungen)' name='federated.0yqpr0w06a76vw17jsdlz1yrfwe5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0yqpr0w06a76vw17jsdlz1yrfwe5'>
+            <column caption='Closing Price' datatype='real' name='[Calculation_2082563014223413250]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IFNULL(&#10;    SUM([Close]),&#10;    PREVIOUS_VALUE(0)&#10;)'>
+                <table-calc ordering-type='Rows' />
+              </calculation>
+            </column>
+            <column datatype='real' name='[Close]' role='measure' type='quantitative' />
+            <column caption='Stock (Yahoo Finance Data.csv1)' datatype='string' name='[Stock (Yahoo_Finance_Data.csv1)]' role='dimension' type='nominal' />
+            <column caption='Stock1' datatype='string' name='[Stock]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Volume]' role='measure' type='quantitative' />
+            <column-instance column='[total_posts_per_day]' derivation='Attribute' name='[attr:total_posts_per_day:qk]' pivot='key' type='quantitative' />
+            <column caption='Date (Reddit Posts.Csv)' datatype='date' name='[date (reddit_posts.csv)]' role='dimension' type='ordinal' />
+            <column-instance column='[Stock (Yahoo_Finance_Data.csv1)]' derivation='None' name='[none:Stock (Yahoo_Finance_Data.csv1):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Stock]' derivation='None' name='[none:Stock:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Volume]' derivation='Sum' name='[sum:Volume:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[date (reddit_posts.csv)]' derivation='Day-Trunc' name='[tdy:date (reddit_posts.csv):qk]' pivot='key' type='quantitative' />
+            <column caption='Total Posts Per Day' datatype='integer' name='[total_posts_per_day]' role='dimension' type='quantitative' />
+            <column-instance column='[Calculation_2082563014223413250]' derivation='User' name='[usr:Calculation_2082563014223413250:qk]' pivot='key' type='quantitative'>
+              <table-calc ordering-type='Rows' />
+            </column-instance>
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock (Yahoo_Finance_Data.csv1):nk]'>
+            <groupfilter function='member' level='[none:Stock (Yahoo_Finance_Data.csv1):nk]' member='&quot;GME&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock:nk]'>
+            <groupfilter function='member' level='[none:Stock:nk]' member='&quot;GME&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock (Yahoo_Finance_Data.csv1):nk]</column>
+            <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]' />
+              <color column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[usr:Calculation_2082563014223413250:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]' />
+              <color column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Volume:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[attr:total_posts_per_day:qk]' />
+              <color column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[usr:Calculation_2082563014223413250:qk] + [federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Volume:qk])</rows>
+        <cols>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[tdy:date (reddit_posts.csv):qk]</cols>
+      </table>
+      <simple-id uuid='{24111E99-6D5C-4B9C-AC5B-04480E2CEA64}' />
+    </worksheet>
+    <worksheet name='Blatt 2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='ticker_search.csv (Mehrere Verbindungen)' name='federated.0yqpr0w06a76vw17jsdlz1yrfwe5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0yqpr0w06a76vw17jsdlz1yrfwe5'>
+            <column caption='Ticker Count' datatype='integer' name='[Calculation_2715740974698921986]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='IFNULL(&#10;    COUNT([ticker (ticker_per_day.csv)]),&#10;    0&#10;)' />
+            </column>
+            <column caption='Stock (Yahoo Finance Data.csv1)' datatype='string' name='[Stock (Yahoo_Finance_Data.csv1)]' role='dimension' type='nominal' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column-instance column='[Stock (Yahoo_Finance_Data.csv1)]' derivation='None' name='[none:Stock (Yahoo_Finance_Data.csv1):nk]' pivot='key' type='nominal' />
+            <column-instance column='[date]' derivation='Day-Trunc' name='[tdy:date:qk]' pivot='key' type='quantitative' />
+            <column caption='Ticker (Ticker Per Day.Csv)' datatype='string' name='[ticker (ticker_per_day.csv)]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_2715740974698921986]' derivation='User' name='[usr:Calculation_2715740974698921986:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock (Yahoo_Finance_Data.csv1):nk]'>
+            <groupfilter function='empty-level' member='[none:Stock (Yahoo_Finance_Data.csv1):nk]' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[tdy:date:qk]' included-values='in-range-or-null'>
+            <min>#2020-09-01 00:00:00#</min>
+            <max>#2021-03-31 00:00:00#</max>
+          </filter>
+          <slices>
+            <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[tdy:date:qk]</column>
+            <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock (Yahoo_Finance_Data.csv1):nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[usr:Calculation_2715740974698921986:qk]</rows>
+        <cols>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[tdy:date:qk]</cols>
+        <show-full-range>
+          <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[date]</column>
+        </show-full-range>
+      </table>
+      <simple-id uuid='{10CE00DA-70D2-4BDB-820A-3EEA80E61F8A}' />
+    </worksheet>
+    <worksheet name='Blatt 4'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='ticker_search.csv (Mehrere Verbindungen)' name='federated.0yqpr0w06a76vw17jsdlz1yrfwe5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0yqpr0w06a76vw17jsdlz1yrfwe5'>
+            <column datatype='real' name='[Close]' role='measure' type='quantitative' />
+            <column caption='Stock1' datatype='string' name='[Stock]' role='dimension' type='nominal' />
+            <column-instance column='[id (reddit_posts_sent_full.csv)]' derivation='Count' name='[cnt:id (reddit_posts_sent_full.csv):qk]' pivot='key' type='quantitative' />
+            <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Id (Reddit Posts Sent Full.Csv)' datatype='string' name='[id (reddit_posts_sent_full.csv)]' role='dimension' type='nominal' />
+            <column-instance column='[Stock]' derivation='None' name='[none:Stock:nk]' pivot='key' type='nominal' />
+            <column-instance column='[ticker (ticker_per_day.csv)]' derivation='None' name='[none:ticker (ticker_per_day.csv):nk]' pivot='key' type='nominal' />
+            <column-instance column='[Close]' derivation='Sum' name='[sum:Close:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[date]' derivation='Day-Trunc' name='[tdy:date:qk]' pivot='key' type='quantitative' />
+            <column caption='Ticker (Ticker Per Day.Csv)' datatype='string' name='[ticker (ticker_per_day.csv)]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock:nk]'>
+            <groupfilter function='member' level='[none:Stock:nk]' member='&quot;GME&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:ticker (ticker_per_day.csv):nk]'>
+            <groupfilter function='member' level='[none:ticker (ticker_per_day.csv):nk]' member='&quot;GME&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:ticker (ticker_per_day.csv):nk]</column>
+            <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[cnt:id (reddit_posts_sent_full.csv):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Close:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>([federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[cnt:id (reddit_posts_sent_full.csv):qk] + [federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[sum:Close:qk])</rows>
+        <cols>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[tdy:date:qk]</cols>
+      </table>
+      <simple-id uuid='{073DEBC0-2DBB-47A3-B704-AAAC762CEF96}' />
+    </worksheet>
+    <worksheet name='Blatt 5'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='ticker_search.csv (Mehrere Verbindungen)' name='federated.0yqpr0w06a76vw17jsdlz1yrfwe5' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0yqpr0w06a76vw17jsdlz1yrfwe5'>
+            <column-instance column='[sent]' derivation='Count' name='[cnt:sent:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[sent]' derivation='None' name='[none:sent:nk]' pivot='key' type='nominal' />
+            <column caption='Sent' datatype='string' name='[sent]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:sent:nk]'>
+            <groupfilter function='level-members' level='[none:sent:nk]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:sent:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[cnt:sent:qk]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{36E225E9-CBE4-49AF-8C48-959AE5E4F226}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 1'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <datasources>
+        <datasource caption='ticker_search.csv (Mehrere Verbindungen)' name='federated.0yqpr0w06a76vw17jsdlz1yrfwe5' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0yqpr0w06a76vw17jsdlz1yrfwe5'>
+        <column caption='Stock1' datatype='string' name='[Stock]' role='dimension' type='nominal' />
+        <column caption='Date' datatype='date' name='[date]' role='dimension' type='ordinal' />
+        <column-instance column='[Stock]' derivation='None' name='[none:Stock:nk]' pivot='key' type='nominal' />
+        <column-instance column='[date]' derivation='None' name='[none:date:qk]' pivot='key' type='quantitative' />
+      </datasource-dependencies>
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='4' w='100000' x='0' y='0'>
+          <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='7' param='horz' w='98400' x='800' y='1000'>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='98000' id='5' w='82400' x='800' y='1000'>
+              <zone h='49000' id='3' name='Blatt 1' w='41200' x='800' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='9' param='horz' w='41200' x='42000' y='1000'>
+                <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='98000' id='22' is-fixed='true' w='41200' x='42000' y='1000'>
+                  <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='49000' id='10' param='vert' w='41200' x='42000' y='1000'>
+                    <zone h='6500' id='19' name='Blatt 2' w='41200' x='42000' y='1000'>
+                      <layout-cache has-max-size-h='true' maxheight='52' minheight='52' minwidth='152' type-h='scalable' type-w='scalable' />
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin' value='4' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                  <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='49000' id='23' param='vert' w='41200' x='42000' y='50000'>
+                    <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='49000' id='21' param='vert' w='41200' x='42000' y='50000' />
+                  </zone>
+                </zone>
+              </zone>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='49000' id='11' param='vert' w='41200' x='800' y='50000'>
+                <zone h='49000' id='13' name='Blatt 1 (2)' w='41200' x='800' y='50000'>
+                  <layout-cache minheight='299' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+            <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' fixed-size='160' h='98000' id='6' is-fixed='true' param='vert' w='16000' x='83200' y='1000'>
+              <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='5750' id='8' name='Blatt 1' pane-specification-id='2' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]' w='16000' x='83200' y='1000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' h='3250' id='14' name='Blatt 1 (2)' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock:nk]' w='16000' x='83200' y='6750'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' h='8625' id='16' name='Blatt 1' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:date:qk]' values='database' w='16000' x='83200' y='10000'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='850' minheight='850' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='29' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='28' param='vert' w='98400' x='800' y='1000'>
+                <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' h='8625' id='16' name='Blatt 1' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:date:qk]' values='database' w='16000' x='83200' y='10000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='3' is-fixed='true' name='Blatt 1' w='41200' x='800' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='color' _.fcp.SetMembershipControl.true...type-v2='color' h='5750' id='8' name='Blatt 1' pane-specification-id='2' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]' w='16000' x='83200' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='44' h='6500' id='19' is-fixed='true' name='Blatt 2' w='41200' x='42000' y='1000'>
+                  <layout-cache has-max-size-h='true' maxheight='52' minheight='52' minwidth='152' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='filter' _.fcp.SetMembershipControl.true...type-v2='filter' h='3250' id='14' mode='checkdropdown' name='Blatt 1 (2)' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock:nk]' w='16000' x='83200' y='6750'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49000' id='13' is-fixed='true' name='Blatt 1 (2)' w='41200' x='800' y='50000'>
+                  <layout-cache minheight='299' type-h='scalable' type-w='fixed' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{73262BEC-ABCA-413A-8BE3-E50F84DE5D41}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Blatt 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='170'>
+            <card pane-specification-id='2' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{01EAFECD-2BD4-4DB5-9528-23C1CEE2282C}' />
+    </window>
+    <window class='worksheet' name='Blatt 1 (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='170'>
+            <card param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:Stock (Yahoo_Finance_Data.csv1):nk]' type='filter' />
+            <card pane-specification-id='3' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{E00A289F-CAF9-4884-B04A-6633A9225111}' />
+    </window>
+    <window class='worksheet' name='Blatt 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{15828603-EE58-40E0-ADF7-9C72B2A36F41}' />
+    </window>
+    <window class='worksheet' name='Blatt 4'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{9FE276CB-F354-47F8-876E-C16B69DDF6E3}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Blatt 1'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Blatt 1 (2)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Blatt 2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='14' />
+      <simple-id uuid='{72938ADF-13A5-402D-BB2A-6FE39271F9A1}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Blatt 5'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='170'>
+            <card mode='typeinlist' param='[federated.0yqpr0w06a76vw17jsdlz1yrfwe5].[none:sent:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{40CFBD62-C0C2-46D0-B7E9-A2DCB0492988}' />
+    </window>
+  </windows>
+</workbook>

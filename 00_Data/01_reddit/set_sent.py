@@ -13,20 +13,20 @@ def main():
 
     tqdm.pandas()
 
-    low = 0
-    high = 4999
+    low = 60000
+    high = 64999
+    end = 100000
 
-    while high < len(df):
+    while high < end:
         print(f'Batch to {high}')
         df.loc[low:high, 'sent'] = df.loc[low:high, 'selftext'].progress_apply(lambda txt: get_sentiment(txt))
-        df.to_csv('reddit_posts_sent.csv', sep='|', encoding='utf-8', index=False)
+        df.to_csv('reddit_posts_sent_container.csv', sep='|', encoding='utf-8', index=False)
         low = high + 1
         high += 5000
-        if high > len(df):
-            high = len(df) - 1
+        if high == end - 1:
             print(f'Batch to {high}')
             df.loc[low:high, 'sent'] = df.loc[low:high, 'selftext'].progress_apply(lambda txt: get_sentiment(txt))
-            df.to_csv('reddit_posts_sent.csv', sep='|', encoding='utf-8', index=False)
+            df.to_csv('reddit_posts_sent_container.csv', sep='|', encoding='utf-8', index=False)
             break
 
 
