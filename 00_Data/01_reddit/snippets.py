@@ -45,6 +45,10 @@ ticker_list = []
 for ticker in tickers:
     ticker_list.append(ast.literal_eval(ticker))
 
+cnt = Counter(ticker for sublist in ticker_list for ticker in sublist)
+df4 = pd.DataFrame(cnt.most_common(), columns={'ticker', 'count'})
+df4.to_csv('most_common.csv', mode='w', sep='|', index=False, encoding='utf-8')
+
 all_tickers = list(set([ticker for sublist in ticker_list for ticker in sublist]))
 all_tickers.sort()
 
@@ -56,3 +60,23 @@ with tqdm.tqdm(total=len(all_tickers)) as pbar:
         df2 = df2.append(container)
         pbar.update(1)
 
+# -------
+
+
+sent = []
+pos_score = []
+neg_score = []
+neut_score = []
+
+scores = df.sent.to_list()
+
+for score in scores:
+    sent.append(ast.literal_eval(score)[0])
+    pos_score.append(ast.literal_eval(score)[1])
+    neg_score.append(ast.literal_eval(score)[2])
+    neut_score.append(ast.literal_eval(score)[3])
+
+df['sent'] = sent
+df['pos_score'] = pos_score
+df['neg_score'] = neg_score
+df['neut_score'] = neut_score

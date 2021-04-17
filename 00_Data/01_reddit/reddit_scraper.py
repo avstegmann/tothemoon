@@ -68,7 +68,7 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
 
 
 def main():
-    after = int(dt.datetime(2021, 3, 31).timestamp())
+    after = int(dt.datetime(2021, 4, 9).timestamp())
     #before = int(dt.datetime(2021, 4, 10, 19, 26, 00).timestamp())
     get_posts('submission',
               subreddit='wallstreetbets',

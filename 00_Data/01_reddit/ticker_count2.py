@@ -4,10 +4,10 @@ from string import punctuation
 import os
 import tqdm
 
-os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit/archive')
-df = pd.read_csv('full_no-dupes.csv', sep='|', lineterminator='\n')
-df = df.dropna(subset=['selftext'])
 os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit')
+df = pd.read_csv('reddit_posts_finalV1.csv', sep='|', lineterminator='\n')
+df = df.dropna(subset=['selftext'])
+df = df.loc[0:2203]
 # https://stockanalysis.com/stocks/
 ticker_names = pd.read_csv('ticker_name.csv', sep='|')
 
@@ -68,7 +68,7 @@ def main():
     df.ticker_list = df.ticker_list.apply(lambda x: sorted(set(list(x.split()))))
     df.to_csv('reddit_posts_safety.csv', sep='|', index=False, encoding='utf-8')
     output = df.drop(['caps1', 'caps2'], axis=1)
-    output.to_csv('reddit_posts.csv', sep='|', index=False, encoding='utf-8')
+    output.to_csv('ticker_count.csv', sep='|', index=False, encoding='utf-8')
 
 
 if __name__ == '__main__':
