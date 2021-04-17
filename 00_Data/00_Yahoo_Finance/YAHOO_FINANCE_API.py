@@ -24,7 +24,7 @@ for ticker in tickerStrings:
     ydata['date'] = pd.to_datetime(ydata.index).date
 
     merged = pd.merge(df, ydata, left_on='date', right_on='date', how='left')
-    stock_data.append(merged)
+    stock_data = stock_data.append(merged)
 
 # combine all dataframes into a single dataframe
 # df = pd.concat(df_list)
