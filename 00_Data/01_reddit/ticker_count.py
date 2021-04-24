@@ -1,56 +1,74 @@
 import pandas as pd
-import spacy
-import tqdm
 import re
 from string import punctuation
 import os
+import tqdm
 
-
-os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit/archive')
-df = pd.read_csv('full_no-dupes.csv', sep='|', lineterminator='\n')
+# https://stockanalysis.com/stocks/
 os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit')
+ticker_names = pd.read_csv('ticker_name.csv', sep='|')
+os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit/archive')
+df = pd.read_csv('second_aprilV1.csv', sep='|', lineterminator='\n')
+df = df.dropna(subset=['selftext'])
 
-nlp = spacy.load('en_core_web_lg')
-print('spacy loaded')
 PUNCTUATION = set(punctuation)
-BLACKLIST = ['ev', 'covid', 'etf', 'nyse', 'sec', 'spac', 'fda', 'fed', 'treasury', 'eu', 'cnbc', 'faq', 'company',
-             'otcbb', 'finra', 'wsb', 'ppp', 'msr', 'mso', 'dfv', 'otm', 'itm', 'fd', 'fyi', 'pe', 'eps', 'dow', 'tldr',
-             'hodl', 'moon', 'td', 'ath', 'fomo', 'u s', 'eod', 'eow', 'hf', 'atm', 'cdc', 'fud', 'wsj', 'CNN', 'leaps',
-             'usd', 'opec', 'ceo', 'cfo', 'tba', 'wtf']
+BLACKLIST = ['all', 'and', 'are', 'ath', 'atm', 'big', 'can', 'cdc', 'ceo', 'cfo', 'cnbc', 'cnn', 'company', 'covid',
+             'cost', 'dfv', 'dow', 'eod', 'eow', 'eps', 'etf', 'faq', 'fda', 'fed', 'finra', 'fomo', 'for', 'fud',
+             'fang', 'fyi', 'get', 'gdp', 'good', 'hodl', 'huge', 'home', 'imo', 'itm', 'leaps', 'low', 'mso', 'msr',
+             'now', 'nyse', 'next', 'one', 'opec', 'otcbb', 'otm', 'out', 'ppp', 'real', 'see', 'sec', 'spac', 'tba',
+             'the', 'tldr', 'usd', 'wsb', 'wsj', 'wtf', 'usb']
 
 
-def get_orgs(text):
-    # https://github.com/jamescalam/transformers/blob/main/course/named_entity_recognition/xx_ner_reddit_freq_table.ipynb
+def tickerize(text):
     text = re.sub(r'[$]ROPE', '', text)
-    org_list = re.findall(r'(?<=[$])[A-Z]{1,5}', text)
-    text = re.sub('[\\d]', '', text)
-    text = re.sub('Toronto NEO', '', text)
-    for p in PUNCTUATION:
-        text = text.replace(p, ' ')
-    text = " ".join(text.split())
-
-    doc = nlp(text)
-
-    for entity in doc.ents:
-        if entity.text.isupper() and len(entity.text) <= 5 and entity.label_ == 'ORG' and entity.text.lower() not in BLACKLIST:
-            if entity.text == 'NOKIA':
-                org_list.append('NOK')
-            else:
-                org_list.append(entity.text)
-    org_list = list(set(org_list))
-    return org_list
+    caps = []
+    for token in text.split():
+        for p in PUNCTUATION:
+            token = token.replace(p, '')
+        if token.isupper() and len(token) > 2 and token.lower() not in BLACKLIST:
+            caps.append(token)
+    return caps.__str__()
 
 
 def main():
-    master_list = []
-    with tqdm.tqdm(total=df.__len__()) as pbar:
-        for row in tqdm.tqdm(df.iterrows()):
-            text = str(row[1].title) + ' ' + str(row[1].selftext)
-            master_list.append(get_orgs(text))
+    df['caps1'] = df.selftext.apply(lambda x: tickerize(x))
+    df['caps2'] = df.title.apply(lambda x: tickerize(x))
+    print('tickerized')
+    df['ticker_list'] = ''
+
+    with tqdm.tqdm(total=ticker_names.__len__()) as pbar:
+        for _, ticker in ticker_names.iterrows():
+            try:
+                mask = df.caps1.str.contains(rf'\b{ticker.ticker}\b', regex=True)
+                df.loc[mask, 'ticker_list'] += ticker.ticker + ' '
+            except AttributeError:
+                print('Attribute Error')
+                print(ticker.ticker)
+            try:
+                mask = df.selftext.str.contains(ticker.comp_name)
+                df.loc[mask, 'ticker_list'] += ticker.ticker + ' '
+            except AttributeError:
+                print('Attribute Error')
+                print(ticker.comp_name)
+            try:
+                mask = df.caps2.str.contains(rf'\b{ticker.ticker}\b', regex=True)
+                df.loc[mask, 'ticker_list'] += ticker.ticker + ' '
+            except AttributeError:
+                print('Attribute Error')
+                print(ticker.ticker)
+            try:
+                mask = df.title.str.contains(ticker.comp_name)
+                df.loc[mask, 'ticker_list'] += ticker.ticker + ' '
+            except AttributeError:
+                print('Attribute Error')
+                print(ticker.comp_name)
             pbar.update(1)
-    example = df
-    example['ticker_mentions'] = master_list
-    example.to_csv('ticker_search.csv', sep='|', index=False, encoding='utf-8')
+
+    # https://stackoverflow.com/questions/479897/how-to-remove-duplicates-from-python-list-and-keep-order
+    df.ticker_list = df.ticker_list.apply(lambda x: sorted(set(list(x.split()))))
+    # df.to_csv('reddit_posts_safety.csv', sep='|', index=False, encoding='utf-8')
+    output = df.drop(['caps1', 'caps2'], axis=1)
+    output.to_csv('second_april_ticker_count.csv', sep='|', index=False, encoding='utf-8')
 
 
 if __name__ == '__main__':

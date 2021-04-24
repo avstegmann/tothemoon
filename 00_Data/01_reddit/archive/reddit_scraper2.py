@@ -36,13 +36,13 @@ def get_posts(data_type, after=None, before=None, ticker=None, **kwargs):
             payload = kwargs
             request = requests.get(base_url, params=payload)
             try:
-                data = request.json()
-                dump = pd.DataFrame.from_dict(data['data'])
-                df = df.append(dump, ignore_index=True)
-                kwargs['before'] = df.iloc[-1].created_utc
-                date = kwargs['before']
-                mes += (df.__len__() - mes)
-                print('Status: ' + str(mes))
+                # data = request.json()
+                # dump = pd.DataFrame.from_dict(data['data'])
+                # df = df.append(dump, ignore_index=True)
+                # kwargs['before'] = df.iloc[-1].created_utc
+                # date = kwargs['before']
+                # mes += (df.__len__() - mes)
+                # print('Status: ' + str(mes))
                 if (mes % 100) > 0:
                     break
             except:

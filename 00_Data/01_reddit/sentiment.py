@@ -1,5 +1,6 @@
 from transformers import BertForSequenceClassification, BertTokenizer
 import torch
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 '''
 Sources:
 https://towardsdatascience.com/how-to-apply-transformers-to-any-length-of-text-a5601410af7f
@@ -7,6 +8,8 @@ https://www.youtube.com/watch?v=yDGo9z_RlnE
 '''
 tokenizer = BertTokenizer.from_pretrained('ProsusAI/finbert')
 model = BertForSequenceClassification.from_pretrained('ProsusAI/finbert')
+
+vader = SentimentIntensityAnalyzer()
 
 
 def get_sentiment(txt):
@@ -59,5 +62,9 @@ def get_sentiment(txt):
     return [label, round(mean[0].item(), 2), round(mean[1].item(), 2), round(mean[2].item(), 2)]
 
 
+def get_sentiment2(txt):
+    return vader.polarity_scores(txt)['compound']
+
+
 if __name__ == '__main__':
-    get_sentiment(txt=None)
+    get_sentiment2(txt=None)

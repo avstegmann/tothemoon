@@ -1,7 +1,5 @@
 import yfinance as yf
 import pandas as pd
-import datetime as dt
-from yfinance import Ticker
 import os
 
 os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit')
