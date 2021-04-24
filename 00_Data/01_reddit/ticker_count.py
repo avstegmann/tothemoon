@@ -1,8 +1,8 @@
-import pandas as pd
-import re
 from string import punctuation
-import os
+import pandas as pd
 import tqdm
+import os
+import re
 
 # https://stockanalysis.com/stocks/
 os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit')
