@@ -5,6 +5,9 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 Sources:
 https://towardsdatascience.com/how-to-apply-transformers-to-any-length-of-text-a5601410af7f
 https://www.youtube.com/watch?v=yDGo9z_RlnE
+
+https://www.nltk.org/_modules/nltk/sentiment/vader.html
+https://stackoverflow.com/questions/40325980/how-is-the-vader-compound-polarity-score-calculated-in-python-nltk
 '''
 tokenizer = BertTokenizer.from_pretrained('ProsusAI/finbert')
 model = BertForSequenceClassification.from_pretrained('ProsusAI/finbert')
@@ -13,6 +16,11 @@ vader = SentimentIntensityAnalyzer()
 
 
 def get_sentiment(txt):
+    """
+    Takes a text and applies FinBERT sentiment algorithm
+    :param txt: text
+    :return: list of sentiment label + pos, neg, neut score
+    """
     if type(txt) is not str:
         raise ValueError('txt')
 
@@ -63,6 +71,11 @@ def get_sentiment(txt):
 
 
 def get_sentiment2(txt):
+    """
+    Takes text and applies NLTK vader
+    :param txt: text
+    :return: vader compound polarity score
+    """
     return vader.polarity_scores(txt)['compound']
 
 

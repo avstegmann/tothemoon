@@ -17,44 +17,11 @@ A project of the University of St. Gallen <br>
 Master in Business Innovation
 </H3>
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#helpful code examples">Helpful Code Examples</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
-
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<div>
-<iframe src="https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes" frameborder="0"></iframe>
-</div>
-
-
-
-https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes
-
+### Final Insights 
+* [Video]()
+* [Tableau Dashboard](https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -72,26 +39,6 @@ Here's a blank template to get started:
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/avonstegmann/tothemoon.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
 
 
 
@@ -106,6 +53,9 @@ accessed Information below.
 _Generally Useful_
 * [TQDM](https://pypi.org/project/tqdm/)
 * [Convert utc date formate to datetime](https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime) 
+* [Lambda functions and pandas](https://www.geeksforgeeks.org/applying-lambda-functions-to-pandas-dataframe/)
+* [Remove duplicates from list and keep order](https://stackoverflow.com/questions/479897/how-to-remove-duplicates-from-python-list-and-keep-order)
+* [Counter](https://stackoverflow.com/questions/19211018/using-counter-with-list-of-lists)
 
 _Yahoo Finance_
 * [yfinance](https://pypi.org/project/yfinance/)
@@ -113,52 +63,19 @@ _Yahoo Finance_
 * [Getting market capitalization](https://stackoverflow.com/questions/64965121/getting-market-cap-data-using-yfinance)
 
 _Reddit_
-* [Access API to get JSON output](https://www.jcchouinard.com/how-to-use-reddit-api-with-python/)
 * [Pushshift API documentation](https://pushshift.io/api-parameters/)
+* [Access API to get JSON output](https://www.jcchouinard.com/how-to-use-reddit-api-with-python/)
+* [FinBERT Sentiment Analysis - Blogpost](https://towardsdatascience.com/how-to-apply-transformers-to-any-length-of-text-a5601410af7f)
+* [FinBERT Sentiment Analysis - Video](https://www.youtube.com/watch?v=yDGo9z_RlnE)
+* [NLTK Vader](https://www.nltk.org/_modules/nltk/sentiment/vader.html)
+* [NLTK Vader compound score explained](https://stackoverflow.com/questions/40325980/how-is-the-vader-compound-polarity-score-calculated-in-python-nltk)
 
+_Tableau_
+* [Replace NULL](https://kb.tableau.com/articles/howto/populate-empty-cells-in-a-text-table-with-zeroes-or-existing-data)
 
+<!-- DATA SOURCES -->
+## Data Sources
 
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/avonstegmann/tothemoon/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/avonstegmann/tothemoon](https://github.com/avonstegmann/tothemoon)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-* []()
+* [Yahoo Finance](https://finance.yahoo.com/)
+* [Reddit](https://www.reddit.com/r/wallstreetbets)
+* [Stockanalysis.com](https://stockanalysis.com)

@@ -4,7 +4,7 @@ import os
 import ast
 import tqdm
 
-os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit')
+os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/02_Reddit')
 
 df = pd.read_csv('reddit_posts.csv', sep='|', lineterminator='\n')
 df = df.drop_duplicates(subset='selftext')

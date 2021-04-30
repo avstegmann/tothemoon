@@ -1,13 +1,13 @@
-from sentiment import get_sentiment2
+from sentiment import get_sentiment2  # import either get_sentiment1 or get_sentiment2
 import os
 import pandas as pd
 from tqdm import tqdm
 
 
 def main():
-    print('df loaded')
-    os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/00_Data/02_Reddit')
+    os.chdir('/Users/alex/Universität St.Gallen/Data2Dollar - General/02_Reddit')
     df = pd.read_csv('reddit_posts_final.csv', sep='|', lineterminator='\n')
+    print('df loaded')
 
     df['sent'] = ''
 
