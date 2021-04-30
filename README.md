@@ -47,8 +47,11 @@ Master in Business Innovation
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<iframe src="https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes"></iframe>
+<iframe src="https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes" frameborder="0"></iframe>
+
+
 https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes
+
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
