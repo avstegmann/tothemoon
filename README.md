@@ -47,7 +47,10 @@ Master in Business Innovation
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+<div>
 <iframe src="https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes" frameborder="0"></iframe>
+</div>
+
 
 
 https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes
