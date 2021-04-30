@@ -17,30 +17,31 @@ A project of the University of St. Gallen <br>
 Master in Business Innovation
 </H3>
 
-<!-- ABOUT THE PROJECT -->
+## Contributors
+
+* Cyrill Müller
+* Christian Steinemann
+* Alexander von Stegmann
+* Benjamin Wyss
+
 ## About The Project
 ### Final Insights 
 * [Video]()
 * [Tableau Dashboard](https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`avonstegmann`, `tothemoon`, `twitter_handle`, `email`, `project_title`, `project_description`
+### Python Libraries
 
-
-### Built With
-
-* []()
-* []()
-* []()
-
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-
-
+* datetime
+* from nltk.sentiment.vader: SentimentIntensityAnalyzer
+* os
+* pandas
+* re
+* requests
+* from string: punctuation
+* torch
+* tqdm
+* from transformers: BertForSequenceClassification, BertTokenizer
+* yfinance
 
 <!-- HELPFUL CODE EXAMPLES -->
 ## Helpful code examples
