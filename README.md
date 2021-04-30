@@ -34,7 +34,7 @@ Master in Business Innovation
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#Helpful Code Examples">Helpful Code Examples</a></li>
+    <li><a href="#helpful code examples">Helpful Code Examples</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -47,7 +47,7 @@ Master in Business Innovation
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
+<iframe src="https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes"></iframe>
 https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes
 
 Here's a blank template to get started:
@@ -89,7 +89,7 @@ This is an example of how to list things you need to use the software and how to
 
 
 
-<!-- Helpful Code Examples -->
+<!-- HELPFUL CODE EXAMPLES -->
 ## Helpful code examples
 
 <p>
