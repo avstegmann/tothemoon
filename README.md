@@ -10,6 +10,12 @@
 *** avonstegmann, tothemoon, twitter_handle, email, project_title, project_description
 -->
 
+# FromData2Dollar
+
+<H3> 
+A project of the University of St. Gallen <br>
+Master in Business Innovation
+</H3>
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -28,7 +34,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#Helpful Code Examples">Helpful Code Examples</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -42,7 +48,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -83,12 +89,28 @@ This is an example of how to list things you need to use the software and how to
 
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
+<!-- Helpful Code Examples -->
+## Helpful code examples
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+<p>
+While working on our code, we relied on the help of Stackoverflow, Library Documentation and Blog-Posts. Find the 
+accessed Information below. 
+</p>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_Generally Useful_
+* [TQDM](https://pypi.org/project/tqdm/)
+* [Convert utc date formate to datetime](https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime) 
+
+_Yahoo Finance_
+* [yfinance](https://pypi.org/project/yfinance/)
+* [Fill DataFrame with list of dates](https://riptutorial.com/pandas/example/6438/create-a-sample-dataframe-with-datetime)
+* [Getting market capitalization](https://stackoverflow.com/questions/64965121/getting-market-cap-data-using-yfinance)
+
+_Reddit_
+* [Access API to get JSON output](https://www.jcchouinard.com/how-to-use-reddit-api-with-python/)
+* [Pushshift API documentation](https://pushshift.io/api-parameters/)
+
+
 
 
 

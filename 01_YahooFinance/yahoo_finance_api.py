@@ -13,7 +13,7 @@ stock_data = pd.DataFrame(columns=['date', 'ticker', 'Open', 'High', 'Low', 'Clo
 
 
 for ticker in tickerStrings:
-    # set full date range that includes weekends
+    # set full date range that includes weekends -> https://riptutorial.com/pandas/example/6438/create-a-sample-dataframe-with-datetime
     dates = pd.date_range(start='2019-07-01', end='2021-04-17', freq='D')
     df = pd.DataFrame(dates, columns=['date'])
 

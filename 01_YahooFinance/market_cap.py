@@ -1,6 +1,6 @@
 import yfinance as yf
 import pandas as pd
-import tqdm # https://pypi.org/project/tqdm/
+import tqdm  # https://pypi.org/project/tqdm/
 import os
 
 # load the list of the 1000 most common tickers on WSB in our data set

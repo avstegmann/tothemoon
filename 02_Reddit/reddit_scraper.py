@@ -22,26 +22,35 @@ def get_posts(data_type, after=None, before=None, **kwargs):
     df = pd.DataFrame(columns=kwargs['fields'])
     df = df.append(pd.DataFrame.from_dict(data['data']))
 
+    # set before value to get the previous batch of 100 results
     kwargs['before'] = df.iloc[-1].created_utc
     date = kwargs['before']
     status = df.__len__()
     print(status)
 
+    # delete line brakes to clean csv
     df = df.replace("\n", " ", regex=True)
+    # first save -> normal mode
     df.to_csv('full.csv', sep='|', index=False, encoding='utf-8')
+    # re-initialize DataFrame
     df = pd.DataFrame(columns=kwargs['fields'])
 
+    # loop that runs until the 'after'-date is reached
     while date > after:
         payload = kwargs
         request = requests.get(base_url, params=payload)
         try:
+            # same procedure as before
             data = request.json()
             dump = pd.DataFrame.from_dict(data['data'])
             df = df.append(dump, ignore_index=True)
+
             kwargs['before'] = df.iloc[-1].created_utc
             date = kwargs['before']
             status += (df.__len__() - status)
             print('Status: ' + str(status))
+
+            # after 5000 results, save to file -> mode append
             if (status % 5000) == 0:
                 df = df.replace("\n", " ", regex=True)
                 df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
@@ -52,12 +61,15 @@ def get_posts(data_type, after=None, before=None, **kwargs):
         except:
             print('Error')
             pass
+
     df = df.replace("\n", " ", regex=True)
     df.to_csv('full.csv', mode='a', sep='|', index=False, encoding='utf-8', header=False)
     df = pd.read_csv('full.csv', sep='|', lineterminator='\n')
-    # https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime
+
+    # convert date format https://stackoverflow.com/questions/16176996/keep-only-date-part-when-using-pandas-to-datetime
     df.created_utc = pd.to_datetime(df.created_utc, unit='s')
     df['date'] = pd.to_datetime(df.created_utc, unit='s').dt.date
+    # safe to file -> mode write
     df.to_csv('full.csv', mode='w', sep='|', index=False, encoding='utf-8')
     print('Done')
 
