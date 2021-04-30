@@ -26,7 +26,7 @@ Master in Business Innovation
 
 ## About The Project
 ### Final Insights 
-* [Video]()
+* [Video](https://app.animaker.com/video/JBW4S73TUZ4UJ4EA)
 * [Tableau Dashboard](https://public.tableau.com/profile/cyrill.m.ller#!/vizhome/D2DStory/Data2Dollar?publish=yes)
 
 ### Python Libraries
